@@ -1,5 +1,10 @@
 #include "binary_trees.h"
 
+/**
+ * binary_tree_inorder - print tree using inorder
+ * @tree: tree to print
+ * @func: func to use on node value
+ */
 void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int))
 {
 	if (!tree || !func)
