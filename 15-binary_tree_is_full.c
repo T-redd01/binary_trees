@@ -1,0 +1,49 @@
+#include "binary_trees.h"
+
+/**
+ * binary_tree_is_leafB - test if tree has left or right node
+ * @node: node to test
+ *
+ * Return: 1 is leaf, 0 is not leaf
+ */
+int binary_tree_is_leafB(const binary_tree_t *node)
+{
+	if (!node)
+		return (0);
+
+	if (node->left || node->right)
+		return (0);
+	return (1);
+}
+
+/**
+ * binary_tree_leavesC - count leaves of tree
+ * @tree: tree to use
+ *
+ * Return: number of leaves
+ */
+size_t binary_tree_leavesC(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+
+	return (binary_tree_leavesC(tree->left) +
+			binary_tree_leavesC(tree->right) +
+			binary_tree_is_leafB(tree));
+}
+
+/**
+ * binary_tree_is_full - check if no single child nodes
+ * @tree: tree to check
+ *
+ * Return: 1 is full, 0 nto full
+ */
+int binary_tree_is_full(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+
+	if ((binary_tree_leavesC(tree) % 2))
+		return (0);
+	return (1);
+}
