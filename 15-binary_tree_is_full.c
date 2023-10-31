@@ -33,6 +33,20 @@ size_t binary_tree_leavesC(const binary_tree_t *tree)
 }
 
 /**
+ * maxC - find max number
+ * @num1: num to compare
+ * @num2: num to compare
+ *
+ * Return: max number
+ */
+int maxB(int num1, int num2)
+{
+        if (num1 > num2)
+                return (num1);
+        return (num2);
+}
+
+/**
  * binary_tree_is_full - check if no single child nodes
  * @tree: tree to check
  *
@@ -40,10 +54,16 @@ size_t binary_tree_leavesC(const binary_tree_t *tree)
  */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
+	int ret = 0;
+
 	if (!tree)
 		return (0);
 
-	if ((binary_tree_leavesC(tree) % 2))
-		return (0);
-	return (1);
+	if (tree->left && !(tree->right))
+		return (1);
+	if (tree->right && !(tree->left))
+		return (1);
+
+	ret = maxB(binary_tree_is_full(tree->left), binary_tree_is_full(tree->right));
+	return ((ret - 1) * -1);
 }

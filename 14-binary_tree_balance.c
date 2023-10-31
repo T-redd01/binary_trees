@@ -22,8 +22,6 @@ size_t maxC(size_t num1, size_t num2)
  */
 size_t binary_tree_heightC(const binary_tree_t *tree)
 {
-	size_t left = 0, right = 0;
-
 	if (!tree)
 		return (0);
 
