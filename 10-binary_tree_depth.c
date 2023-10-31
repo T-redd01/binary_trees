@@ -12,15 +12,12 @@ int binary_tree_is_leafC(const binary_tree_t *node)
 
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
-	size_t leaf = 0;
+	size_t depth = 0;
 
-	if (!tree || !(tree->parent))
-		return (0);
-
-	if ((binary_tree_is_leafC(tree->left)))
-		leaf++;
-	if ((binary_tree_is_leafC(tree->right)))
-		leaf++;
-
-	return (binary_tree_depth(tree->parent) + leaf);
+	while (tree->parent)
+	{
+		depth++;
+		tree = tree->parent;
+	}
+	return (depth);
 }

@@ -10,20 +10,26 @@
 int main(void)
 {
     binary_tree_t *root;
-    size_t size;
+    binary_tree_t *sibling;
 
     root = binary_tree_node(NULL, 98);
     root->left = binary_tree_node(root, 12);
-    root->right = binary_tree_node(root, 402);
-    binary_tree_insert_right(root->left, 54);
-    binary_tree_insert_right(root, 128);
-    binary_tree_print(root);
+    root->right = binary_tree_node(root, 128);
+    root->left->right = binary_tree_node(root->left, 54);
+    root->right->right = binary_tree_node(root->right, 402);
+    root->left->left = binary_tree_node(root->left, 10);
+    root->right->left = binary_tree_node(root->right, 110);
+    root->right->right->left = binary_tree_node(root->right->right, 200);
+    root->right->right->right = binary_tree_node(root->right->right, 512);
 
-    size = binary_tree_size(root);
-    printf("Size of %d: %lu\n", root->n, size);
-    size = binary_tree_size(root->right);
-    printf("Size of %d: %lu\n", root->right->n, size);
-    size = binary_tree_size(root->left->right);
-    printf("Size of %d: %lu\n", root->left->right->n, size);
+    binary_tree_print(root);
+    sibling = binary_tree_sibling(root->left);
+    printf("Sibling of %d: %d\n", root->left->n, sibling->n);
+    sibling = binary_tree_sibling(root->right->left);
+    printf("Sibling of %d: %d\n", root->right->left->n, sibling->n);
+    sibling = binary_tree_sibling(root->left->right);
+    printf("Sibling of %d: %d\n", root->left->right->n, sibling->n);
+    sibling = binary_tree_sibling(root);
+    printf("Sibling of %d: %p\n", root->n, (void *)sibling);
     return (0);
 }
