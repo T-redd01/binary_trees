@@ -31,42 +31,6 @@ int is_full(const binary_tree_t *tree)
 }
 
 /**
- * maxA - find max number
- * @num1: num to compare
- * @num2: num to compare
- *
- * Return: max number
- */
-size_t maxA(size_t num1, size_t num2)
-{
-	if (num1 > num2)
-		return (num1);
-	return (num2);
-}
-
-/**
- * binary_tree_heightB - find height of tree
- * @tree: tree to count height
- *
- * Return: height of tree
- */
-size_t binary_tree_heightB(const binary_tree_t *tree)
-{
-	size_t left = 0, right = 0;
-
-	if (!tree)
-		return (0);
-
-	if (tree->left)
-		left = binary_tree_heightB(tree->left) + 1;
-
-	if (tree->right)
-		right = binary_tree_heightB(tree->right) + 1;
-
-	return (maxA(left, right));
-}
-
-/**
  * size - count nodes of a tree
  * @tree: to to count nodes
  *
