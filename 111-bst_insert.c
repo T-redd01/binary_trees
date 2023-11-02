@@ -1,7 +1,5 @@
 #include "binary_trees.h"
 
-//binary_tree_node
-
 /**
  * bst_insert - insert into search tree
  * @tree: double pointer to tree
@@ -9,35 +7,41 @@
  *
  * Return: new node, null
  */
-/*
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *node, *travel = *tree;
+	bst_t *travel = *tree;
 
 	if (!tree)
 		return (NULL);
-
 	if (!travel)
 	{
-		node = binary_tree_node(NULL, value);
-		*tree = node;
-		return (node);
+		*tree = (bst_t *)binary_tree_node(NULL, value);
+		return (*tree);
 	}
-
-	while (travel->left || travel->right)
+	while (travel)
 	{
-		if (travel->n == value)
-			return (NULL);
-
-		if (travel->n > value)
-			travel = travel->left;
-		else if (travel->n < value)
-			travel = travel->right;
+		if (value > travel->n)
+		{
+			if (travel->right)
+				travel = travel->right;
+			else
+			{
+				travel->right = (bst_t *)binary_tree_node(travel, value);
+				return (travel->right);
+			}
+		}
+		else if (value < travel->n)
+		{
+			if (travel->left)
+				travel = travel->left;
+			else
+			{
+				travel->left = (bst_t *)binary_tree_node(travel, value);
+				return (travel->left);
+			}
+		}
 		else
-			break
+			return (NULL);
 	}
-	if (travel->n > value)
-	{
-		node = binary_tree_node(travel, value);
-		node->left = travel->left;
-}*/
+	return (NULL);
+}
