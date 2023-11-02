@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 
-binary_tree_node
+//binary_tree_node
 
 /**
  * bst_insert - insert into search tree
@@ -9,6 +9,7 @@ binary_tree_node
  *
  * Return: new node, null
  */
+/*
 bst_t *bst_insert(bst_t **tree, int value)
 {
 	bst_t *node, *travel = *tree;
@@ -39,4 +40,4 @@ bst_t *bst_insert(bst_t **tree, int value)
 	{
 		node = binary_tree_node(travel, value);
 		node->left = travel->left;
-}
+}*/
