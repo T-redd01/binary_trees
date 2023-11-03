@@ -2,7 +2,7 @@
 
 /**
  * binary_tree_rotate_right - shift tree to right
- * @tree
+ * @tree: tree to check
  *
  * Return: new root, null
  */
